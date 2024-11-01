@@ -1,0 +1,159 @@
+/* For fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Slide up slightly from below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End with normal positioning */
+  }
+}
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* Center content vertically */
+  align-items: center;        /* Center content horizontally */
+  min-height: 100vh;          /* Make homepage take the full viewport height */
+  padding: 80px 20px 20px;    /* Add padding to account for the header */
+  text-align: center;
+}
+
+.homepage h1 {
+  color: #02072f;
+  font-size: 70px;
+  margin-top: 80px;
+  animation: fadeIn 1s ease-in-out; /* Header fades in first */
+}
+
+.homepage p {
+  color: #02072f;
+  margin: 20px auto;
+  font-weight: 300;
+  font-size: 25px;
+  animation: fadeIn 1.5s ease-in-out; /* Paragraph fades in next */
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+}
+
+/* No animation for the background video */
+.bgvideo {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  box-shadow: 0 0 30px rgb(230, 173, 173);
+  opacity: 0.7; /* Slightly transparent video */
+}
+
+/* Animating the buttons with a slight delay */
+.buttonx {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+  animation: fadeIn 2s ease-in-out; /* Buttons fade in after header and paragraph */
+}
+
+button {
+  padding: 15px 0 15px 0;
+  margin: 20px 10px;
+  width: 200px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 0.5px solid #02072fa2;
+  background: #02072fa2;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+button span {
+  background: #02072fa2;
+  height: 100%;
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: width 0.5s;
+  border-radius: 25px;
+}
+
+button:hover span {
+  width: 100%; /* Fills the button with color on hover */
+}
+
+button:hover {
+  color: #fff;
+  border: none;
+}
+
+/* Animating the card holder with a delayed fade-in */
+.card-holder {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border-radius: 20px;
+  animation: fadeIn 2.5s ease-in-out;
+   /* Cards appear after the buttons */
+}
+
+/* Card animation with delay to match the card-holder */
+.card {
+  background-color: #02072fa2;
+  border: 1px solid #02072fa2;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  transition: background-color 0.3s ease;
+  padding: 20px;
+  width: 30%; /* Default width for larger screens */
+  margin: 10px;
+  
+  animation: fadeIn 2.8s ease-in-out; /* Cards fade in after the card-holder */
+}
+
+.card:hover {
+  background-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .card-holder {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 60%;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-holder {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 70%;
+    margin: 10px auto;
+  }
+}
